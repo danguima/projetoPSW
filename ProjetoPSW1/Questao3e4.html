@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Cadastro de Notas</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Cadastro de Notas</h1>
+	</div>
+
+	<div align="center">
+		<form id="form" name="form">
+			Aluno: <input type="text" style="margin-bottom: 5px;" name="aluno"><br>
+			Nota1: <input type="text" style="margin-bottom: 5px;" name="nota1"><br>
+			Nota2: <input type="text" style="margin-bottom: 5px;" name="nota2"><br>
+			Nota Final: <input type="text" style="margin-bottom: 5px;" name="notaFinal"><br>
+			Prova Final: <input type="text" style="margin-bottom: 5px;" name="provaFinal"><br>
+			Situação: <input type="text" style="margin-bottom: 5px;" name="situacao"><br>
+			<button onclick="enviar()">Enviar</button>
+		</form>
+	</div>
+
+	<script>
+		$("#form").submit(function(e) {
+    			var url = "/server"; 
+	    			$.ajax({
+	          			type: "POST",
+	           			url: url,
+	           			data: $("#form").serialize(), 
+	           			success: function(data){
+	               				alert(data); 
+	           			}
+	         		});
+
+	    		e.preventDefault(); 
+
+		});
+	</script>
+</body>
+</html>
